@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="content">
+        <h1>Active Tag Watchers</h1>
+        <table>
+            <tr>
+                <th>Link</th>
+                <th>HTML</th>
+                <th>id</th>
+                <th>State</th>
+                <th>Last Value</th>
+                <th>Current Value</th>
+                <th>Last Run Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for instance in instances %}
+            <tr>
+                <td>{{instance.link}}</td>
+                <td>{{instance.html_content}}</td>
+                <td>{{instance.id}}</td>
+                <td>{{instance.state}}</td>
+                <td>{{instance.last_val}}</td>
+                <td>{{instance.content}}</td>
+                <td>{{instance.last_run}}</td>
+                <td>
+                    {% if instance.state == "Active" %}
+                        <a href = "/updateValue/{{instance.id}}">Get Current Value</a>
+                    {% else %}
+                        <a href = "/start/{{instance.id}}">Start</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action = "/" method = "POST">
+            <label for = "link">Enter link: </label>
+            <input type = "text" id = "link" name = "link">
+    
+            <label for = "html_content">Enter HTML tag: </label>
+            <input type = "text" id = "html_content" name = "html_content">
+            <input type = "submit" value = "Create">
+        </form>
+        <p id="timer">3:00:00</p>
+        <script>
+            var timer = document.getElementById("timer");
+            var count = 3 * 60 * 60;
+            function counter() {
+                count--;
+                var hours = Math.floor(count / 3600);
+                var minutes = Math.floor((count - hours * 3600) / 60);
+                timer.innerHTML = "Time until all active instances are checked: " + hours + "h " + minutes + "m "
+                if(count == 0){
+                    count = 3 * 60 * 60
+                    fetch('/updateValuesScheduled', {
+                        method: 'POST',
+                    })
+                }
+            }
+            setInterval(counter, 1000);</script>
+    </div>
+</body>
+</html>
+
+
+
+
