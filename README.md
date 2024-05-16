@@ -17,8 +17,8 @@ Sends notification when a tracked tag's value is altered.
 Frontend updates in progress
 
 **Instructions:**
-<code>
-1. Install Anaconda if you don't have it
-2. conda env create -f environment.yml  
-3. conda activate ItemWatch  
-4. python app.py</code>
+
+1. <code>Install Anaconda if you don't have it</code>
+2. <code>conda env create -f environment.yml  </code>
+3. <code>conda activate ItemWatch  </code>
+4. <code>python app.py</code>
