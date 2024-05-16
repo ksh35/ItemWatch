@@ -1,4 +1,5 @@
 ItemWatch is a website tag tracking platform. A user can enter website links and corresponding html tags to track. 
+For example, a user can setup a tag tracker to track price changes, image changes, and more.
 
 The program will monitor these tags and check their value every 3 hours for changes. Users can have multiple concurrent tracked tags.  
 
