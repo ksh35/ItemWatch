@@ -18,7 +18,7 @@ Frontend updates in progress
 
 **Instructions:**
 
-1. <code>Install Anaconda if you don't have it</code>
+1. Install Anaconda if you don't have it
 2. <code>conda env create -f environment.yml  </code>
 3. <code>conda activate ItemWatch  </code>
 4. <code>python app.py</code>
